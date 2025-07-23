@@ -1,61 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplikasi Manajemen Barang (CRUD Items)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi web sederhana yang dibangun dengan framework Laravel untuk mengelola data barang (items). Proyek ini menyediakan fungsionalitas CRUD (Create, Read, Update, Delete) yang lengkap, dengan fitur unggah gambar dan tabel data yang interaktif dan efisien.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Manajemen Data Barang**: Fungsionalitas penuh untuk menambah, melihat, mengubah, dan menghapus data barang.
+- **Atribut Barang**: Setiap barang memiliki atribut seperti kode unik, nama, harga, dan gambar.
+- **Tabel Data Interaktif**: Daftar barang ditampilkan menggunakan [Yajra DataTables](https://yajrabox.com/docs/laravel-datatables/master) dengan pemrosesan di sisi server (*server-side processing*). Ini membuat pemuatan data menjadi sangat cepat dan efisien, bahkan untuk jutaan data, lengkap dengan fitur pencarian dan pemilahan (*sorting*).
+- **Unggah & Pemrosesan Gambar**:
+  - Pengguna dapat mengunggah gambar untuk setiap barang.
+  - Gambar yang diunggah akan secara otomatis diubah ukurannya (*resized*) menjadi 300x300 piksel menggunakan pustaka [Intervention Image](https://image.intervention.io/) untuk konsistensi tampilan dan efisiensi penyimpanan.
+  - Gambar lama akan otomatis terhapus saat gambar baru diunggah pada proses edit.
+- **Validasi Data**: Validasi di sisi server untuk memastikan integritas dan format data yang benar sebelum disimpan ke database.
+- **API Endpoint**: Menyediakan endpoint API sederhana untuk mengambil harga barang berdasarkan ID, yang bisa diintegrasikan dengan sistem lain.
+- **Manajemen Hak Akses**: Telah terpasang pustaka [Spatie Laravel Permission](https://spatie.be/docs/laravel-permission/v6/introduction) yang siap digunakan untuk mengelola peran (*roles*) dan izin (*permissions*) pengguna.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tumpukan Teknologi (Technology Stack)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Backend
+- **PHP 8.2+**
+- **Laravel 12**
+- **Pustaka Utama**:
+  - `yajra/laravel-datatables-oracle`: Untuk tabel data sisi server.
+  - `intervention/image`: Untuk manipulasi gambar.
+  - `spatie/laravel-permission`: Untuk manajemen peran dan izin.
+  - `laravel/ui`: Untuk komponen UI bawaan Laravel.
+  - `laravel/breeze`: Untuk autentikasi.
+  **Database**: Kompatibel dengan database relasional yang didukung Laravel seperti MySQL, PostgreSQL, SQLite, dan SQL Server.
 
-## Learning Laravel
+### Frontend
+- **Vite**: Sebagai *build tool* untuk aset frontend.
+- **JavaScript**
+- **Laravel Blade**: Sebagai *templating engine*.
+- **Bootstrap (via `laravel/ui`)**: Kelas-kelas CSS seperti `.btn` mengindikasikan penggunaan Bootstrap untuk styling.
+- **JavaScript**: Untuk interaksi dinamis.
+- **CSS**: Untuk styling.
+- **HTML**: Struktur hal
+- **jQuery**: Untuk manipulasi DOM.
+- **Chart.js**: Untuk visualisasi data.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Alat Pengembangan
+- **Visual Studio Code**: Editor kode yang digunakan.
+- **Git**: Sistem kontrol versi.
+- **Composer**: Manajer paket PHP.
+- **Node.js & npm**: Untuk mengelola dependensi JavaScript.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Database
+- Kompatibel dengan database relasional yang didukung Laravel seperti **MySQL, PostgreSQL, SQLite, dan SQL Server**.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Panduan Instalasi & Setup
 
-## Laravel Sponsors
+1.  **Clone Repositori**
+    ```bash
+    git clone <url-repositori-anda>
+    cd test-adibayu
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2.  **Install Dependensi**
+    ```bash
+    # Install dependensi PHP
+    composer install
 
-### Premium Partners
+    # Install dependensi JavaScript
+    npm install
+    ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+3.  **Konfigurasi Lingkungan**
+    ```bash
+    # Salin file .env.example
+    copy .env.example .env
 
-## Contributing
+    # Generate kunci aplikasi
+    php artisan key:generate
+    ```
+    - Buka file `.env` dan sesuaikan konfigurasi database Anda (DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+4.  **Migrasi Database & Storage Link**
+    ```bash
+    # Jalankan migrasi untuk membuat tabel-tabel
+    php artisan migrate
 
-## Code of Conduct
+    # Buat symbolic link untuk folder storage
+    php artisan storage:link
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5.  **Jalankan Aplikasi**
+    ```bash
+    # Jalankan server development Laravel
+    php artisan serve
 
-## Security Vulnerabilities
+    # Jalankan Vite untuk kompilasi aset frontend
+    npm run dev
+    ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+6.  **Akses Aplikasi**
+    Buka browser Anda dan kunjungi `http://127.0.0.1:8000`.
